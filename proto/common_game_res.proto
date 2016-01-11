@@ -1,0 +1,196 @@
+// 统一奖励
+
+package Common;
+
+// 游戏资源产生源
+enum GameResSource
+{
+    //option allow_alias = false;
+
+    GAME_RES_SOURCE_UNSPICIFIED                 = 0;    // 未指定源
+                                                
+    GAME_RES_SOURCE_MISSION                     = 1;    // 任务产生
+    GAME_RES_SOURCE_INSTANCE                    = 2;    // 副本产生
+    GAME_RES_SOURCE_PORTAL                      = 3;    // 管理端产生
+    GAME_RES_SOURCE_GM_COMMAND                  = 5;    // GM指令产生
+    GAME_RES_SOURCE_UPGRADE_EQUIP               = 7;    // 装备升级
+    GAME_RES_SOURCE_ADVANCED_EQUIP              = 8;    // 装备品质升级
+    GAME_RES_SOURCE_INLAY_GEM                   = 9;    // 镶嵌宝石
+    GAME_RES_SOURCE_UPGRADE_GEM                 = 10;   // 宝石升级
+    GAME_RES_SOURCE_ADVANCED_SKILL              = 11;   // 技能进阶
+    GAME_RES_SOURCE_UNLOCK_HERO                 = 12;   // 解锁转职英雄
+    GAME_RES_SOURCE_ARENA                       = 15;   // 竞技场
+    GAME_RES_SOURCE_ARENA_CLEAR_CD              = 16;   // 竞技场清除CD
+    GAME_RES_SOURCE_WORLD_BOSS                  = 20;   // 世界BOSS
+    GAME_RES_SOURCE_COLLECTION                  = 29;   // 宝物收集
+    GAME_RES_SOURCE_COLLECTION_SHOP             = 30;   // 地下商店
+    GAME_RES_SOURCE_TERRITORY                   = 31;   // 地盘产出
+    GAME_RES_SOURCE_USE_ITEM                    = 32;   // 使用道具
+    GAME_RES_SOURCE_ACTIVITY_AWARD              = 33;   // 活跃度奖励
+    GAME_RES_SOURCE_MOMO_AWARD                  = 34;   // 好友么么奖励
+    GAME_RES_SOURCE_UPGRADE_SKILL               = 35;   // 技能升级
+    GAME_RES_SOURCE_UPDATE_SKILL_POINT          = 36;   // 技能点更新
+    GAME_RES_SOURCE_BUY_SP                      = 37;   // 购买体力
+    GAME_RES_SOURCE_DAILY_MISSION_AWARD         = 38;   // 日常任务领奖
+    GAME_RES_SOURCE_SELL_ITEM                   = 39;   // 出售道具
+    GAME_RES_SOURCE_DAILY_AWARD                 = 40;   // 登陆奖励 
+    GAME_RES_SOURCE_ONLINE_AWARD                = 41;   // 在线奖励
+    GAME_RES_SOURCE_MOCK_EXAM_AWARD             = 42;   // 答题奖励
+    GAME_RES_SOURCE_EXAM_RANK_AWARD             = 43;   // 答题排名奖励
+    GAME_RES_SOURCE_RECHARGE_AWARD              = 44;   // 充值奖励
+    GAME_RES_SOURCE_SANDBAGSWAR_AWARD           = 45;   // 沙包活动奖励
+    GAME_RES_SOURCE_ROB_AWARD                   = 46;   // 打劫所得
+    GAME_RES_SOURCE_REFRESH_CHALL_HISTORY       = 47;   // 刷新挑战记录
+    GAME_RES_SOURCE_NATURE_INC_SP               = 48;   // 自然体力增长
+    GAME_RES_SOURCE_EXCHANGE_ITEM               = 49;   // 道具兑换
+    GAME_RES_SOURCE_PRINTING_PRESS              = 50;   // 印钞机
+    GAME_RES_SOURCE_CLEAR_TRANSFORM_CD          = 51;   // 清除转职CD
+    GAME_RES_SOURCE_CLIMB_TOWER_AWARD           = 52;   // 爬塔奖励
+    GAME_RES_SOURCE_HERO_CELL                   = 53;   // 英雄地盘
+    GAME_RES_SOURCE_BUY_CLIMB_TOWER_COUNT       = 54;   // 爬塔购买挑战次数
+    GAME_RES_SOURCE_MSG_AWARD                   = 55;   // 消息领奖
+    GAME_RES_SOURCE_REVIVE_IN_INSTANCE          = 56;   // 副本内复活消耗
+    GAME_RES_SOURCE_ADVANCED_HERO               = 57;   // 英雄进阶消耗
+    GAME_RES_SOURCE_LOTTERY                     = 58;   // 英雄扭蛋
+    GAME_RES_SOURCE_LOTTERY_SHOP                = 59;   // 抽奖兑换商店
+    GAME_RES_SOURCE_REVIVE_PVP_HERO             = 60;   // PVP英雄复活
+    GAME_RES_SOURCE_RESET_EXTRA_SP              = 61;   // 额外体力增长
+    GAME_RES_SOURCE_DEGREE_DEVOUR               = 62;   // 学位道具吞噬
+    GAME_RES_SOURCE_TERR_ROB                    = 63;   // 地盘(随机事件)打劫
+    GAME_RES_SOURCE_LEV_AWARD                   = 64;   // 等级奖励
+    GAME_RES_SOURCE_DEGREE_ALL_DEVOUR           = 65;   // 一键整合吞噬
+    GAME_RES_SOURCE_SIGN_AWARD                  = 66;   // 签到奖励
+    GAME_RES_SOURCE_GYM_LEASE                   = 67;   // 健身房租借英雄
+    GAME_RES_SOURCE_GROUP_BUILD                 = 68;   // 社团建设
+    GAME_RES_SOURCE_CREATE_GROUP                = 69;   // 创建社团
+    GAME_RES_SOURCE_FIRE_GROUP_CAPTAIN          = 70;   // 弹劾会长
+    GAME_RES_SOURCE_GROUP_OUTPUT                = 71;   // 社团建筑产出
+    GAME_RES_SOURCE_STREET_WAR                  = 72;   // 街头争霸奖励
+    GAME_RES_SOURCE_GVG_AWARD                   = 73;   // 公会大乱斗奖励
+    GAME_RES_SOURCE_GROUP_SCORE_AWARD           = 74;   // 社团积分排行奖励
+    GAME_RES_SOURCE_BUY_SKILL_POINT             = 75;   // 购买技能点
+    GAME_RES_SOURCE_BUY_D_NORMAL_GIFTBAG        = 76;   // 购买每日普通礼包
+    GAME_RES_SOURCE_BUY_D_VIP_GIFTBAG           = 77;   // 都买每日VIP礼包
+    GAME_RES_SOURCE_BUY_STREET_WAR_CHALLENGE    = 78;   // 购买街头争霸挑战次数
+    GAME_RES_SOURCE_STAR_AWARD                  = 79;   // 星级奖励
+    GAME_RES_SOURCE_LOTTERY_DRAGON              = 80;   // 幸运神龙
+    GAME_RES_SOURCE_COLLECT_CLOTHES             = 81;   // 时装合成
+    GAME_RES_SOURCE_PUT_ON_CLOTHES              = 82;   // 穿时装
+    GAME_RES_SOURCE_LOTTERY_SCHOOL              = 83;   // 女仆书店 
+    GAME_RES_SOURCE_SUPPLEMENT_SIGN             = 84;   // 补签
+    GAME_RES_SOURCE_ACTIVE_HERO_COMNINATION     = 85;   // 激活英雄组合
+    GAME_RES_SOURCE_UNLOCK_FELLOW_CELL          = 86;   // 解锁羁绊格子
+    GAME_RES_SOURCE_ARENA_SHOP                  = 87;   // 竞技商店
+    GAME_RES_SOURCE_FIRST_RECHARGE_AWARD        = 88;   // 首充奖励
+    GAME_RES_SOURCE_STREET_SHOP                 = 89;   // 街霸商店
+    GAME_RES_SOURCE_DEGREE_SHOP                 = 90;   // 学霸商店
+    GAME_RES_SOURCE_BUY_GOLD_INVEST             = 91;   // 购买理财计划
+    GAME_RES_SOURCE_AWARD_GOLD_INVEST           = 92;   // 理财领奖
+    GAME_RES_SOURCE_OPERATION                   = 93;   // 运营活动
+    GAME_RES_SOURCE_TRANSFER_HERO_EXP           = 94;   // 英雄传承
+    GAME_RES_SOURCE_WEEK_LOGIN_AWARD            = 95;   // 七日登录奖励
+    GAME_RES_SOURCE_WEEK_RECHARGE_AWARD         = 96;   // 七日累冲奖励
+    GAME_RES_SOURCE_WEEK_RUSH_PURCHASE          = 97;   // 七日特购
+    GAME_RES_SOURCE_FC_RACE                     = 98;   // 战力竞赛
+    GAME_RES_SOURCE_TEAM_PVE                    = 99;   // 组队PVE
+    GAME_RES_SOURCE_PASS_RACE                   = 100;  // 通关竞赛
+    GAME_RES_SOURCE_RECHARGE                    = 101;  // 用户充值
+
+    GAME_RES_SOURCE_DEGREE_DECOMPOSITION        = 120;  // 证书分解
+    GAME_RES_SOURCE_RECRUIT_PAOJIE              = 121;  // 招募炮姐
+    GAME_RES_SOURCE_COLLECT_HERO                = 122;  // 五贤相助
+    GAME_RES_SOURCE_ADVANCED_CHUNLI             = 123;  // 进阶春丽
+    GAME_RES_SOURCE_COLLECT_GEM                 = 124;  // 宝石收集
+    GAME_RES_SOURCE_COLLECT_DEGREE              = 125;  // 学位收集
+    GAME_RES_SOURCE_PURPLE_AWARD                = 126;  // 全身紫装
+    GAME_RES_SOURCE_FC_RANK_AWARD               = 127;  // 战力排行领奖
+    GAME_RES_SOURCE_LEV_RANK_AWARD              = 128;  // 等级排行领奖
+    GAME_RES_SOURCE_ARENA_RANK_AWARD            = 129;  // 竞技排行领奖
+    GAME_RES_SOURCE_REFINE_MAGIC                = 130;  // 附魔精炼
+    GAME_RES_SOURCE_FINISH_REFINE_MAGIC         = 131;  // 附魔精炼立即完成
+    GAME_RES_SOURCE_AWARD_REFINE_MAGIC          = 132;  // 附魔精炼领奖
+    GAME_RES_SOURCE_ARTIFACT_EXCHANGE           = 135;  // 神器合成
+    GAME_RES_SOURCE_PUT_ON_ARTIFACT             = 136;  // 穿神器
+    GAME_RES_SOURCE_UPGRADE_ARTIFACT            = 137;  // 升级神器
+    GAME_RES_SOURCE_ADVANCE_ARTIFACT            = 138;  // 进阶神器
+    GAME_RES_SOURCE_INLAY_ARTIFACT              = 139;  // 镶嵌神器
+    GAME_RES_SOURCE_UPGRADE_GEM_ARTIFACT        = 140;  // 神器宝石升级
+    GAME_RES_SOURCE_GEM_EXCHANGE                = 141;  // 宝石兑换
+    GAME_RES_SOURCE_EQUIP_STARUP                = 142;  // 装备升星
+    GAME_RES_SOURCE_ACTIVE_TITLE                = 143;  // 激活称号
+    GAME_RES_SOURCE_INNER_ACVITITY              = 144;  // 内置活动
+    GAME_RES_SOURCE_TOURNAMENT                  = 145;  // 武道会
+    GAME_RES_SOURCE_TOURNAMENT_SHOP             = 146;  // 武道会商店
+    GAME_RES_SOURCE_ARTIFACT_DECOMPOSE          = 147;  // 神器分解
+    GAME_RES_SOURCE_BUY_LEV_SHOP_GOODS          = 148;  // 等级特惠商店购买
+    GAME_RES_SOURCE_BUY_ITEM                    = 149;  // 购买道具
+    GAME_RES_SOURCE_GROWUP                      = 150;  // 成长之路
+    GAME_RES_SOURCE_TURNTABLE                   = 151;  // 转盘抽奖
+    GAME_RES_SOURCE_RESET_TURNTABLE             = 152;  // 重置转盘
+    GAME_RES_SOURCE_PET_FEED                    = 153;  // 宠物喂养
+    GAME_RES_SOURCE_VIP_DAILY_AWARD             = 154;  // VIP每日领奖
+    GAME_RES_SOURCE_SEASON_AWARD                = 155;  // PK赛季奖励
+    GAME_RES_SOURCE_COST_GOLD                   = 156;  // 消耗钻石产生
+    GAME_RES_SOURCE_DAILY_SCORE_AWARD           = 157;  // 每日积分奖励 
+    GAME_RES_SOURCE_PET_HATCH                   = 158;  // 宠物孵化 
+    GAME_RES_SOURCE_PET_LEVUP                   = 159;  // 宠物升级 
+    GAME_RES_SOURCE_PET_ADVANCE                 = 160;  // 宠物进化
+    GAME_RES_SOURCE_PET_MISSION                 = 161;  // 宠物任务
+    GAME_RES_SOURCE_FULL_AWARD                  = 162;  // 全服奖励
+    GAME_RES_SOURCE_MEAT_BUN                    = 163;  // 美味包子
+    GAME_RES_SOURCE_ITEM_COMPOSITE              = 164;  // 道具合成
+    GAME_RES_SOURCE_VIP_WEEK_AWARD              = 165;  // VIP每周礼包
+    GAME_RES_SOURCE_LIMITED_CHALLENGE           = 166;  // 限时挑战
+    GAME_RES_SOURCE_RESET_HERO_EXP              = 167;  // 重置英雄经验
+    GAME_RES_SOURCE_LIMITED_MISSION             = 168;  // 限时任务
+    GAME_RES_SOURCE_ADVANCED_DEGREE             = 169;  // 证书进阶
+    GAME_RES_SOURCE_EGG_LOTTERY_RANK_AWARD      = 170;  // 扭蛋抽奖钻石消耗排行榜奖励
+    GAME_RES_SOURCE_ITEM_EXPIRE                 = 171;  // 道具过期
+    GAME_RES_SOURCE_BUY_RUNNING_RACE_COUNT      = 172;  // 购买人气赛跑次数
+    GAME_RES_SOURCE_SINGLE_RUNNING_RACE         = 173;  // 单次人气赛跑奖励
+    GAME_RES_SOURCE_RANK_RUNNING_RACE           = 174;  // 人气赛跑排名奖励
+    GAME_RES_SOURCE_PRACTICE_EXCHANGE           = 175;  // 洗练兑换
+    GAME_RES_SOURCE_PRACTICE                    = 176;  // 洗练消耗
+    GAME_RES_SOURCE_REVERT_PRACTICE             = 177;  // 撤销洗练
+    GAME_RES_SOURCE_REVERT_HERO_START           = 178;  // 撤销升星
+    GAME_RES_SOURCE_BUY_GROUP_SP_WELFARE        = 179;  // 社团聚餐
+}
+
+// 资源类型
+enum GameResType
+{
+    //option allow_alias = false;
+    
+    GAME_RES_TYPE_INVALID       = 0;
+    GAME_RES_TYPE_COIN          = 1;    // 铜币
+    GAME_RES_TYPE_GOLD          = 2;    // 金币
+    GAME_RES_TYPE_EXP           = 3;    // 经验
+    GAME_RES_TYPE_ITEM          = 4;    // 道具
+    GAME_RES_TYPE_FAME          = 5;    // 声望
+    GAME_RES_TYPE_SP            = 6;    // 体力
+    GAME_RES_TYPE_VIP_EXP       = 7;    // VIP经验
+    GAME_RES_TYPE_SKILL_POINT   = 8;    // 技能点
+    GAME_RES_TYPE_SCORE         = 9;    // 转盘积分
+    GAME_RES_TYPE_HERO          = 10;   // 英雄
+    GAME_RES_TYPE_PET           = 11;   // 宠物
+    GAME_RES_TYPE_MAX           = 12;   // 上限值 
+}
+
+// 资源产出，消耗
+message GameRes
+{
+    optional GameResType    type        = 1 [default = GAME_RES_TYPE_INVALID];
+    repeated sint64         param_list  = 2;
+    
+    optional sfixed64       expire_time = 10;  // 过期时间戳
+    optional bytes          data        = 101; // 附加属性
+}
+
+// 带概率资源配置
+message GameResWithProb
+{
+    optional sint32         prob        = 1;
+    optional GameResType    type        = 2 [default = GAME_RES_TYPE_INVALID];
+    repeated sint64         param_list  = 3;
+}
+

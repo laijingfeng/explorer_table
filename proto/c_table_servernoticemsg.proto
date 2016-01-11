@@ -1,0 +1,14 @@
+// 服务器通知消息
+package Table;
+
+// 服务器通知消息
+message SERVER_NOTICE_MSG
+{
+    optional uint32	id		= 1; //id
+	optional string	content	= 2; //内容
+}
+
+message SERVER_NOTICE_MSG_ARRAY
+{
+    repeated SERVER_NOTICE_MSG rows = 1;
+}

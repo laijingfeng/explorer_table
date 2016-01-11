@@ -1,0 +1,32 @@
+// 活跃度
+
+import "common_activity.proto";
+import "common_game_res.proto";
+
+package Table;
+
+// 活跃度任务
+message ACTIVITY_MISSION
+{
+    optional Common.ActivityType type	= 1 [default = ACTIVITY_TYPE_ELITE_CHALLENGE];//类型
+    optional string name				= 2;//名称
+	optional string description			= 4;//描述
+	optional string icon				= 6;//Icon图标
+}
+
+message ACTIVITY_MISSION_ARRAY
+{
+    repeated ACTIVITY_MISSION rows = 1;
+}
+
+// 活跃度奖励
+message ACTIVITY_AWARD
+{
+	optional int32 score 				= 1;//活跃度积分
+	repeated Common.GameRes award_list	= 2;//奖励
+}
+
+message ACTIVITY_AWARD_ARRAY
+{
+    repeated ACTIVITY_AWARD rows = 1;
+}

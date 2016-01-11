@@ -1,0 +1,11 @@
+// 场景
+
+package Common;
+
+// 场景类型
+enum SceneType
+{
+    SCENE_TYPE_INVALID	= 0;
+    SCENE_TYPE_MAIN		= 1;
+	SCENE_TYPE_COPY		= 2;
+}

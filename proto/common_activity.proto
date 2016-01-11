@@ -1,0 +1,55 @@
+// 活跃度
+
+package Common;
+
+enum ActivityType
+{
+    ACTIVITY_TYPE_INVALID         = 0;
+    
+    ACTIVITY_TYPE_ELITE_CHALLENGE = 1;  // 精英挑战
+    ACTIVITY_TYPE_DEVIL_CHALLENGE = 2;  // 魔王挑战
+    ACTIVITY_TYPE_ARENA_CHALLENGE = 3;  // 竞技场挑战
+    ACTIVITY_TYPE_TERRITORY_BONUS = 4;  // 地盘分红
+    ACTIVITY_TYPE_UPGRADE_EQUIP   = 5;  // 装备强化
+    ACTIVITY_TYPE_COMPLETE_DM     = 6;  // 完成日常任务
+    ACTIVITY_TYPE_BUY_SP          = 7;  // 购买体力
+    ACTIVITY_TYPE_MOMO_FRIENDS    = 8;  // 么么好友
+    ACTIVITY_TYPE_SANDBAGS_WARS   = 9;  // 沙包大战
+    ACTIVITY_TYPE_MOCK_EXAM       = 10; // 模拟考试
+    ACTIVITY_TYPE_PRINTING_PRESS  = 11; // 印钞机
+    ACTIVITY_TYPE_CLIMB_TOWER     = 12; // 爬塔
+    ACTIVITY_TYPE_STREET_WAR      = 13; // 街头争霸
+    ACTIVITY_TYPE_TEAM_PVE        = 14; // 参加组队副本
+    ACTIVITY_TYPE_TOURNAMENT      = 15; // 武道会挑战
+    ACTIVITY_TYPE_TURNTABLE       = 16; // 幸运转盘抽奖
+    ACTIVITY_TYPE_LOTTERY         = 17; // 抽黄金蛋或切糕
+
+    ACTIVITY_TYPE_END             = 18;
+}
+
+message ActivityMission
+{
+    enum State
+    {
+        STATE_UNFINISHED = 0;
+        STATE_FINISHED   = 1;
+    }
+
+    optional ActivityType type  = 1;
+    optional State        state = 2;
+    optional int32 finish_cond  = 3;
+    optional int32 progress     = 4;
+    optional int32 score_addition = 5;
+}
+
+message ActivityAwardStatus
+{
+    optional int32 score   = 1;
+    optional bool  awarded = 2; // 是否领奖
+}
+
+message Activity
+{
+    repeated ActivityMission     activity_list = 1; // 所有的活跃度任务
+    repeated ActivityAwardStatus award_list    = 2; // 领奖状态(防止重复领奖)
+}

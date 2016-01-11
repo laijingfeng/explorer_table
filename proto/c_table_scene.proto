@@ -1,0 +1,21 @@
+// 场景
+
+import "common_scene.proto";
+
+package Table;
+
+// 场景
+message SCENE
+{
+    optional uint32	id					= 1; //id
+	optional Common.SceneType type		= 2 [default = SCENE_TYPE_INVALID]; //类型
+	optional string name				= 3; //名字
+	optional string desc				= 4; //描述
+	optional string	scene_name			= 5; //场景名
+	optional string level_name			= 6; //关卡名字
+}
+
+message SCENE_ARRAY
+{
+    repeated SCENE rows = 1;
+}
