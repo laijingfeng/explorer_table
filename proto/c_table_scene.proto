@@ -13,6 +13,9 @@ message SCENE
 	optional string desc				= 4; //描述
 	optional string	scene_name			= 5; //场景名
 	optional string level_name			= 6; //关卡名字
+	
+	optional int32 blood 				= 7; //血量
+	optional int32 jump_count			= 8; //连跳次数
 }
 
 message SCENE_ARRAY
