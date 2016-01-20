@@ -7,15 +7,16 @@ package Table;
 // 场景
 message SCENE
 {
-    optional uint32	id					= 1; //id
-	optional Common.SceneType type		= 2 [default = SCENE_TYPE_INVALID]; //类型
-	optional string name				= 3; //名字
-	optional string desc				= 4; //描述
-	optional string	scene_name			= 5; //场景名
-	optional string level_name			= 6; //关卡名字
+    optional uint32				id			= 1; //id
+	optional Common.SceneType	type		= 2 [default = SCENE_TYPE_INVALID]; //类型
+	optional string 			name		= 3; //名字
+	optional string 			desc		= 4; //描述
+	optional string				scene_name	= 5; //场景名
+	optional string 			level_name	= 6; //关卡名字
 	
-	optional int32 blood 				= 7; //血量
-	optional int32 jump_count			= 8; //连跳次数
+	optional int32				blood 		= 7; //血量
+	optional int32				jump_count	= 8; //连跳次数
+	optional string				hero_name	= 9; //英雄名
 }
 
 message SCENE_ARRAY
